@@ -3,8 +3,9 @@ In Rakefile edit the ENV[BROWSERSTACK USER] &  ENV[BROWSERSTACK ACCESSKEY] and f
 
 In appium_parallel.rb set the caps['app'] with the [app url ](https://www.browserstack.com/docs/app-automate/appium/getting-started/ruby)
 
-Commands to run : 
+When using the repository for the first time to install gemfile.lock run the command gem install bundler
 
- gem install bundler
+
+Commands to run the test on browserstack: 
 
 rake appium_parallel
