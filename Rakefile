@@ -1,8 +1,8 @@
 # Prep ENV
 		require 'json'
 		require 'rest-client'
-		ENV['BROWSERSTACK_USER'] = "USER_NAME"
-		ENV['BROWSERSTACK_ACCESSKEY'] = "ACCESS_KEY"
+		ENV['BROWSERSTACK_USER'] = "username"
+		ENV['BROWSERSTACK_ACCESSKEY'] = "access_key"
 
 # App Automate - Android Appium Parallel Tests
 		devices_list = File.read('devices/devices.json')
@@ -15,7 +15,7 @@
 			command += "project=\"#{device['project']}\" "
 			command += "build=\"#{device['build']}\" "
 			command += "name=\"#{device['name']}\" "
-			command += "ruby appium_parallel.rb"
+			command += "rspec appium_parallel_spec.rb"
 			system command
 		end
 
