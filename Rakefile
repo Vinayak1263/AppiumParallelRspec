@@ -1,7 +1,7 @@
 # Prep ENV
 		require 'json'
 		require 'rest-client'
-		ENV['BROWSERSTACK_USER'] = "username"
+		ENV['BROWSERSTACK_USER'] = "user_name"
 		ENV['BROWSERSTACK_ACCESSKEY'] = "access_key"
 
 # App Automate - Android Appium Parallel Tests

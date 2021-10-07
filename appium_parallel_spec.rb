@@ -3,37 +3,15 @@ require 'selenium-webdriver'
 require 'test-unit'
 require 'appium_lib'
 require 'browserstack/local'
-
-
+require_relative "spechelp"
 
 describe 'Basic Wikipedia App interaction' do
 
-	before(:all) do
-		caps = {}
-		  caps['device'] = ENV['device']
-		  caps['os_version'] = ENV['os_version']
-		  caps['realMobile'] = true
-		  caps['app'] = 'App_url'
+	before(:each) do
+		@driver = setup_driver
 	
-		  caps['project'] = ENV['project'] 
-		  caps['build'] = ENV['build'] 
-		  caps['name'] = ENV['name'] 
-		  caps['platformName'] = 'Android'
-		  caps['automationName'] = 'Appium'
-		  caps['browserstack.debug'] = true
-	  
-	  appium_driver = Appium::Driver.new({
-		  'caps' => caps,
-		  'appium_lib' => {
-			  :server_url => "http://#{ENV["BROWSERSTACK_USER"]}:#{ENV["BROWSERSTACK_ACCESSKEY"]}@hub-cloud.browserstack.com/wd/hub"
-		  }}, true)
-	  @driver = appium_driver.start_driver
-		  end
-	
-	
-		  
+	end  
 			
-	
   it 'should send keys to Wikipedia search box' do
 	  wait = Selenium::WebDriver::Wait.new(:timeout => 30)
 		wait.until { @driver.find_element(:accessibility_id, "Search Wikipedia").displayed? }
@@ -51,12 +29,8 @@ describe 'Basic Wikipedia App interaction' do
 
   end
 
-
-
   after(:all) do
-	
-	@driver.quit
-	end
- 
+	stop_driver
+  end 
 
 end
