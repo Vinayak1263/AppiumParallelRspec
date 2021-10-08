@@ -4,6 +4,7 @@ require 'test-unit'
 require 'appium_lib'
 require 'browserstack/local'
 require_relative "spechelp"
+require "test/unit"
 
 describe 'Basic Wikipedia App interaction' do
 
@@ -26,11 +27,15 @@ describe 'Basic Wikipedia App interaction' do
 		results = @driver.find_elements(:class, "android.widget.TextView")
 
 		results_count = results.count
-
+		
+		if (results_count)
+			@driver.execute_script('browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"passed", "reason": "Test Passed"}}')
+		  else
+			@driver.execute_script('browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"failed", "reason": "Test Failed"}}')
   end
+end
 
   after(:all) do
 	stop_driver
   end 
-
 end
