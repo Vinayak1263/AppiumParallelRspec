@@ -11,7 +11,7 @@
 
 * In `spechelp.rb` set the `caps['app']` with the [app url ](https://www.browserstack.com/docs/app-automate/appium/getting-started/ruby#2-upload-your-app)
 
-* You can add devices in `device.json` file as per your requirements 
+* You can add devices in `devices.json` file as per your requirements 
 
 * When using the repository for the first time to install `gemfile.lock` run the command `gem install bundler`
  
