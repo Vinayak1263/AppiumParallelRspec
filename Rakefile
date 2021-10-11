@@ -1,8 +1,8 @@
 # Prep ENV
 		require 'json'
 		require 'rest-client'
-		ENV['BROWSERSTACK_USER'] = "user_name"
-		ENV['BROWSERSTACK_ACCESSKEY'] = "access_key"
+		ENV['BROWSERSTACK_USER'] = "nithyamani3"
+		ENV['BROWSERSTACK_ACCESSKEY'] = "9894DfTkEc24j1xdsGjj"
 
 # App Automate - Android Appium Parallel Tests
 		devices_list = File.read('devices/devices.json')
