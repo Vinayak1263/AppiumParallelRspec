@@ -9,7 +9,7 @@
 
 * In Rakefile edit the `ENV[BROWSERSTACK USER]` &  `ENV[BROWSERSTACK ACCESSKEY]` and fill in the username and access key provided in browserstack dashboard 
 
-* In `spechelp.rb` set the `caps['app']` with the [app url ](https://www.browserstack.com/docs/app-automate/appium/getting-started/ruby)
+* In `spechelp.rb` set the `caps['app']` with the [app url ](https://www.browserstack.com/docs/app-automate/appium/getting-started/ruby#2-upload-your-app)
 
 * You can add devices in `device.json` file as per your requirements 
 
