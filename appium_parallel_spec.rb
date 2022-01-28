@@ -12,15 +12,24 @@ describe 'Basic Wikipedia App interaction' do
 		@driver = setup_driver
 	
 	end  
-			
+
+	begin
+		
+	
+
   it 'should send keys to Wikipedia search box' do
-	  wait = Selenium::WebDriver::Wait.new(:timeout => 30)
-		wait.until { @driver.find_element(:accessibility_id, "Search Wikipedia").displayed? }
+	#   wait = Selenium::WebDriver::Wait.new(:timeout => 30)
+	  #@driver.manage.timeouts.implicit_wait = 10
+		
+	  exception = Selenium::WebDriver::Error::NoSuchElementError
+	  wait = Selenium::WebDriver::Wait.new(timeout: 30, interval: 5, message: 'Timed out after 30 sec', ignore: exception)
+
+	   wait.until { @driver.find_element(:accessibility_id, "Search Wikipedia").displayed? }
 		element = @driver.find_element(:accessibility_id, "Search Wikipedia")
 		element.click
 
-		wait.until { @driver.find_element(:id, "org.wikipedia.alpha:id/search_src_text").displayed? }
-		search_box = @driver.find_element(:id, "org.wikipedia.alpha:id/search_src_text")
+		 wait.until { @driver.find_element(:id, "org.wikipedia.alpha:id/search_src_tex").displayed? }
+		search_box = @driver.find_element(:id, "org.wikipedia.alpha:id/search_src_tex")
 		search_box.send_keys("BrowserStack")
 
 		wait.until { @driver.find_element(:class, "android.widget.TextView").displayed? }
@@ -33,7 +42,17 @@ describe 'Basic Wikipedia App interaction' do
 		  else
 			@driver.execute_script('browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"failed", "reason": "Test Failed"}}')
   end
+
+rescue =>   Selenium::WebDriver::Error::TimeoutError
+	puts 'Element not found'
+	@driver.execute_script('browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"failed", "reason": "Test Failed"}}')
+		
 end
+
+end
+
+
+
 
   after(:all) do
 	stop_driver
